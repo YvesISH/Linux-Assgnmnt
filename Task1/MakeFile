@@ -1,0 +1,23 @@
+#To create a static shared library:
+gcc -c calculator.c
+ar rcs libcalculator.a calculator.o
+
+
+#To create a dynamic shared library:
+gcc -shared -fPIC -o libcalculator.so calculator.c
+
+
+#To link test.c with the static library and generate test1:
+gcc -o test1 test.c -L. -lcalculator -static
+
+
+#To link test.c with the dynamic library and generate test2:
+gcc -o test2 test.c -L. -lcalculator
+
+
+#To check which files are ELF files, you can use the file command:
+file calculator.o libcalculator.a libcalculator.so test1 test2
+
+
+#To confirm with readelf:
+readelf -h calculator.o libcalculator.so test1 test2
