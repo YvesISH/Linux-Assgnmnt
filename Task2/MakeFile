@@ -1,0 +1,3 @@
+#To compile and Run:
+nasm -f elf concatenate.asm
+ld -m elf_i386 -o concatenate concatenate.o
